@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JIKAILAI和PANGYUBING的生日邀请函</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-image: url('11.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'STSong', 'Song', Arial, sans-serif;
+            text-align: center;
+            color: #333;
+            position: relative;
+            margin: 0;
+        }
+
+        .invitation {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 80%;
+        }
+
+        h1 {
+            color: #ff6600;
+        }
+
+        /* 调整图片大小 */
+        #birthdayImage {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* 修改行书样式的文本 */
+        .chinese-calligraphy {
+            font-family: 'STXingkai', 'Kai', cursive;
+            font-size: 24px;
+            line-height: 1.5;
+            letter-spacing: 2px;
+        }
+
+        /* 自定义弹窗样式 */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #name {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation">
+        <h1 class="chinese-calligraphy">JIKAILAI和PANGYUBING的生日邀请函</h1>
+        <p class="chinese-calligraphy">亲爱的朋友们，</p>
+        <p class="chinese-calligraphy">我们非常高兴邀请您参加我们的生日派对！</p>
+        <p class="chinese-calligraphy">日期：10.14</p>
+        <p class="chinese-calligraphy">时间：晚6点</p>
+        <p class="chinese-calligraphy">地点：Lobachevskogo Street, 114</p>
+        <p class="chinese-calligraphy">主题：生日主题</p>
+        <p class="chinese-calligraphy">请您穿着着装显眼包，并带上您最喜欢的笑容。</p>
+        <p class="chinese-calligraphy">如果您打算参加，请务必回复以便我们安排座位。</p>
+        <p class="chinese-calligraphy">期待与您一起庆祝这个特殊的日子！</p>
+        
+        <!-- 修改图片路径，引用 GitHub 仓库中的图片 -->
+        <img id="birthdayImage" src="https://github.com/moneydog0/11/raw/main/11.jpg" alt="我的图片">
+    </div>
+
+    <!-- 延迟3秒后自动弹出签到表单 -->
+    <script>
+        setTimeout(function () {
+            const signUpPopup = document.createElement("div");
+            signUpPopup.className = "popup";
+            signUpPopup.id = "signUpPopup";
+
+            const popupContent = document.createElement("div");
+            popupContent.className = "popup-content";
+
+            popupContent.innerHTML = `
+                <form>
+                    <label for="name">您的名字：</label>
+                    <input type="text" id="name" name="name" required>
+                    <input type="submit" value="签到">
+                </form>
+            `;
+
+            signUpPopup.appendChild(popupContent);
+            document.body.appendChild(signUpPopup);
+
+            // 弹出签到表单
+            signUpPopup.style.display = "block";
+
+            // 添加表单提交事件处理程序
+            signUpPopup.querySelector("form").addEventListener("submit", function (e) {
+                e.preventDefault(); // 阻止默认的表单提交行为
+
+                // 获取用户输入的名字
+                const name = document.getElementById("name").value;
+
+                // 弹出谢谢领旨的提示
+                alert(`谢谢领旨，${name}！`);
+
+                // 清空表单输入
+                document.getElementById("name").value = "";
+
+                // 隐藏弹窗
+                signUpPopup.style.display = "none";
+            });
+        }, 3000); // 3000毫秒（3秒）后触发
+    </script>
+</body>
+</html>
